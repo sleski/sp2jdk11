@@ -10,7 +10,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
@@ -31,10 +30,7 @@ public class HomeControllerTest {
 	public void testSayHelloWorld() throws Exception {
 		this.mockMvc.perform(get("/").accept(MediaType.parseMediaType(MediaType.APPLICATION_JSON_UTF8_VALUE)))
 				.andExpect(status().isOk());
-//				.andExpect(content().contentType("application/json"));
-
-		System.out.println("-------------------------");
-System.out.println("content is = " + content().toString());
+		//.andExpect(content().contentType(MediaType.TEXT_PLAIN_VALUE));
 
 	}
 }
