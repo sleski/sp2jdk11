@@ -16,10 +16,6 @@ public class CarsServiceImpl implements CarsService {
 
 	private JdbcTemplate jdbcTemplate;
 
-	public CarsServiceImpl(){
-
-	}
-
 	@Autowired
 	public CarsServiceImpl(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
