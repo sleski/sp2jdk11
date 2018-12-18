@@ -1,5 +1,6 @@
 package it.tostao.sp2jdk11.controllers;
 
+import it.tostao.sp2jdk11.services.Impl.CarsServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,14 +24,13 @@ public class HomeControllerTest {
 
 	@Before
 	public void setup() {
-		this.mockMvc = MockMvcBuilders.standaloneSetup(new HomeController()).build();
+		this.mockMvc = MockMvcBuilders.standaloneSetup(new HomeController(new CarsServiceImpl())).build();
 	}
 
 	@Test
 	public void testSayHelloWorld() throws Exception {
 		this.mockMvc.perform(get("/").accept(MediaType.parseMediaType(MediaType.APPLICATION_JSON_UTF8_VALUE)))
 				.andExpect(status().isOk());
-		//.andExpect(content().contentType(MediaType.TEXT_PLAIN_VALUE));
-
+//				.andExpect(content().string("Greetings from Spring Boot!"));
 	}
 }
