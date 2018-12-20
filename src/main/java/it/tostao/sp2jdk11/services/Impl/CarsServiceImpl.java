@@ -30,6 +30,6 @@ public class CarsServiceImpl implements CarsService {
 	public int countAll() {
 		String query = "Select count(*) from car";
 		Integer counter = jdbcTemplate.queryForObject(query, Integer.class);
-		return 0;
+		return counter;
 	}
 }

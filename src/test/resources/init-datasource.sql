@@ -1,1 +1,1 @@
-CREATE TABLE car (id long, brand varchar(30),model varchar(30));
+CREATE TABLE car ( brand varchar(30),model varchar(30));

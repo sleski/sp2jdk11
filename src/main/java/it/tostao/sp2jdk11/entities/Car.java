@@ -5,17 +5,17 @@ package it.tostao.sp2jdk11.entities;
  */
 public class Car {
 
-	private long id;
+//	private long id;
 	private String brand;
 	private String model;
 
-	public long getId() {
-		return id;
-	}
+//	public long getId() {
+//		return id;
+//	}
 
-	public void setId(long id) {
-		this.id = id;
-	}
+//	public void setId(long id) {
+//		this.id = id;
+//	}
 
 	public String getBrand() {
 		return brand;

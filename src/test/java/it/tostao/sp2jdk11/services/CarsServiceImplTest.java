@@ -1,6 +1,7 @@
 package it.tostao.sp2jdk11.services;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
+import com.github.springtestdbunit.annotation.DatabaseSetup;
 import it.tostao.sp2jdk11.services.Impl.CarsServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
@@ -32,6 +33,7 @@ public class CarsServiceImplTest {
 	}
 
 	@Test
+	@DatabaseSetup("cars.xml")
 	public void shouldCountNumberOfAllCars() throws Exception {
 		int numberOfCars = carsService.countAll();
 		Assert.assertEquals(numberOfCars, 2);
