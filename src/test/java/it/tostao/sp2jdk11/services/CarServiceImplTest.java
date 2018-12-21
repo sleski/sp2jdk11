@@ -25,7 +25,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/sp2jdk11-test.xml"})
 @TestExecutionListeners({DependencyInjectionTestExecutionListener.class, DbUnitTestExecutionListener.class})
-@DatabaseSetup("cars.xml")
 public class CarServiceImplTest {
 
 	@Autowired
@@ -39,6 +38,7 @@ public class CarServiceImplTest {
 	}
 
 	@Test
+	@DatabaseSetup("/cars.xml")
 	public void shouldCountNumberOfAllCars() throws Exception {
 		int numberOfCars = carsService.countAll();
 		Assert.assertEquals(numberOfCars, 2);
