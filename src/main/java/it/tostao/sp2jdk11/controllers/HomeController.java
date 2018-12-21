@@ -1,6 +1,6 @@
 package it.tostao.sp2jdk11.controllers;
 
-import it.tostao.sp2jdk11.services.CarsService;
+import it.tostao.sp2jdk11.services.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,10 +14,10 @@ import java.util.concurrent.CompletableFuture;
 @RestController
 public class HomeController {
 
-	private CarsService carsService;
+	private CarService carsService;
 
 	@Autowired
-	public HomeController(CarsService carsService) {
+	public HomeController(CarService carsService) {
 		this.carsService = carsService;
 	}
 

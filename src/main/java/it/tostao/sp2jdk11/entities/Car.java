@@ -5,6 +5,16 @@ package it.tostao.sp2jdk11.entities;
  */
 public class Car {
 
+	public Car(){
+
+	}
+
+	public Car(String brand, String model) {
+		this.brand = brand;
+		this.model = model;
+	}
+
+
 //	private long id;
 	private String brand;
 	private String model;

@@ -7,9 +7,11 @@ import java.util.List;
 /**
  * Created by Slawomir Leski on 16-12-2018.
  */
-public interface CarsService {
+public interface CarService {
 
 	List<Car> all();
 
 	int countAll();
+
+	void create(Car car);
 }
