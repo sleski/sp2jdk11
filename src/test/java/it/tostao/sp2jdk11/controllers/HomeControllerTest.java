@@ -29,9 +29,10 @@ public class HomeControllerTest {
 
 	@Before
 	public void setup() {
-		this.mockMvc = MockMvcBuilders.standaloneSetup(new HomeController(new CarServiceImpl(jdbcTemplate))).build();
+		CarServiceImpl carsService = new CarServiceImpl(jdbcTemplate);
+		this.mockMvc = MockMvcBuilders.standaloneSetup(new HomeController(carsService)).build();
 	}
-//
+
 	@Test
 	public void testSayHelloWorld() throws Exception {
 		this.mockMvc.perform(get("/").accept(MediaType.parseMediaType(MediaType.APPLICATION_JSON_UTF8_VALUE)))
