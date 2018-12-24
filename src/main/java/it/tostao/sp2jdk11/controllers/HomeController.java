@@ -1,5 +1,6 @@
 package it.tostao.sp2jdk11.controllers;
 
+import it.tostao.sp2jdk11.entities.Car;
 import it.tostao.sp2jdk11.services.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,8 +24,8 @@ public class HomeController {
 
 	@RequestMapping("/")
 	@ResponseBody
-	public ResponseEntity<String> index() {
+	public ResponseEntity<Car> index() {
 
-		return new ResponseEntity<>( "Greetings from Spring Boot!",HttpStatus.OK);
+		return new ResponseEntity<>( new Car("sss", "ssssss"),HttpStatus.OK);
 	}
 }
