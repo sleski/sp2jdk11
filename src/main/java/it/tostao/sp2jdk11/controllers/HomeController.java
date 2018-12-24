@@ -2,11 +2,11 @@ package it.tostao.sp2jdk11.controllers;
 
 import it.tostao.sp2jdk11.services.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.concurrent.CompletableFuture;
 
 /**
  * Created by Slawomir Leski on 11-12-2018.
@@ -23,8 +23,8 @@ public class HomeController {
 
 	@RequestMapping("/")
 	@ResponseBody
-	public CompletableFuture<String> index() {
+	public ResponseEntity<String> index() {
 
-		return CompletableFuture.completedFuture( "Greetings from Spring Boot!");
+		return new ResponseEntity<>( "Greetings from Spring Boot!",HttpStatus.OK);
 	}
 }
