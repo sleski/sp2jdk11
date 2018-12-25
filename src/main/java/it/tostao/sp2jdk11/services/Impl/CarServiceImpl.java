@@ -5,6 +5,8 @@ import it.tostao.sp2jdk11.mapper.CarMapper;
 import it.tostao.sp2jdk11.services.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,10 +38,13 @@ public class CarServiceImpl implements CarService {
 		return counter;
 	}
 
+	//FIXME id is wrong
 	@Override
-	public void create(Car car) {
+	public int create(Car car) {
+		KeyHolder keyHolder = new GeneratedKeyHolder();
 		String query = "Insert into car (brand, model) VALUES (?, ?)";
-		jdbcTemplate.update(query, car.getBrand(), car.getModel());
+		jdbcTemplate.update(query, car.getBrand(), car.getModel(), keyHolder);
+		return keyHolder.getKey().intValue();
 	}
 
 	@Override

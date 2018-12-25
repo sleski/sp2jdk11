@@ -33,7 +33,6 @@ public class CarServiceImplTest {
 	private JdbcTemplate jdbcTemplate;
 
 	@Before
-
 	public void setUp() throws Exception {
 		carsService = new CarServiceImpl(jdbcTemplate);
 	}
@@ -62,5 +61,13 @@ public class CarServiceImplTest {
 	public void shouldGetAllCars() throws Exception {
 		List<Car> cars = carsService.all();
 		assertThat(cars.size(), is(2));
+	}
+
+	@Test
+	public void shouldUpdateCar() throws Exception {
+		String brand = RandomStringUtils.randomAlphabetic(10);
+		String model = RandomStringUtils.randomAlphabetic(10);
+		Car car = new Car(brand, model);
+
 	}
 }

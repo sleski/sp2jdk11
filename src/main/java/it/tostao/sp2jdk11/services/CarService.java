@@ -13,7 +13,7 @@ public interface CarService {
 
 	int countAll();
 
-	void create(Car car);
+	int create(Car car);
 
 	void update(Car car);
 }
