@@ -5,7 +5,6 @@ import com.github.springtestdbunit.annotation.DatabaseSetup;
 import it.tostao.sp2jdk11.entities.Car;
 import it.tostao.sp2jdk11.services.Impl.CarServiceImpl;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,6 +14,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
+
+import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -42,7 +43,7 @@ public class CarServiceImplTest {
 	@Test
 	public void shouldCountNumberOfAllCars() throws Exception {
 		int numberOfCars = carsService.countAll();
-		Assert.assertEquals(numberOfCars, 2);
+		assertThat(numberOfCars, is(2));
 	}
 
 	@Test
@@ -55,5 +56,11 @@ public class CarServiceImplTest {
 		carsService.create(car);
 		numberOfCars = carsService.countAll();
 		assertThat(numberOfCars, is(3));
+	}
+
+	@Test
+	public void shouldGetAllCars() throws Exception {
+		List<Car> cars = carsService.all();
+		assertThat(cars.size(), is(2));
 	}
 }
