@@ -14,4 +14,6 @@ public interface CarService {
 	int countAll();
 
 	void create(Car car);
+
+	void update(Car car);
 }

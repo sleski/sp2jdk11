@@ -25,20 +25,21 @@ import static org.hamcrest.MatcherAssert.assertThat;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/sp2jdk11-test.xml"})
 @TestExecutionListeners({DependencyInjectionTestExecutionListener.class, DbUnitTestExecutionListener.class})
+@DatabaseSetup("/cars.xml")
 public class CarServiceImplTest {
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
-	private CarServiceImpl carsService;
-
 	@Before
+
 	public void setUp() throws Exception {
 		carsService = new CarServiceImpl(jdbcTemplate);
 	}
 
+	private CarServiceImpl carsService;
+
 	@Test
-	@DatabaseSetup("/cars.xml")
 	public void shouldCountNumberOfAllCars() throws Exception {
 		int numberOfCars = carsService.countAll();
 		Assert.assertEquals(numberOfCars, 2);
@@ -46,11 +47,13 @@ public class CarServiceImplTest {
 
 	@Test
 	public void shouldAddNewCar() {
+		int numberOfCars = carsService.countAll();
+		assertThat(numberOfCars, is(2));
 		String brand = RandomStringUtils.randomAlphabetic(10);
 		String model = RandomStringUtils.randomAlphabetic(5);
 		Car car = new Car(brand, model);
 		carsService.create(car);
-		int numberOfCars = carsService.countAll();
-		assertThat(numberOfCars, is(1));
+		numberOfCars = carsService.countAll();
+		assertThat(numberOfCars, is(3));
 	}
 }
