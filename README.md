@@ -3,10 +3,10 @@ Spring Boot 2 with jdk11
 
 TODO:
 
--Controller test
+-Controller test ✗
 
--Service + test
+-Service + test (JdbcTemplate) ✓
 
--UI
+-UI ✗
 
--DBUnit
+-DBUnit ✓
