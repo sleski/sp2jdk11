@@ -56,6 +56,16 @@ public class CarServiceImpl implements CarService {
 		jdbcTemplate.update(query, car.getBrand(), car.getModel(), car.getId());
 	}
 
+	@Override
+	public Car findById(int carId) {
+		String query = "Select id, brand, model from car where id = ?";
+		List<Car> cars = jdbcTemplate.query(query, new Object[]{carId}, new CarMapper());
+		if (cars.size() == 1) {
+			return cars.get(0);
+		}
+		return null;
+	}
+
 	private static class MyPreparedStatementCreator implements PreparedStatementCreator {
 		private final String query;
 		private final Car car;

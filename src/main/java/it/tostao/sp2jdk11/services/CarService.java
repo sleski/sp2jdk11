@@ -16,4 +16,6 @@ public interface CarService {
 	int create(Car car);
 
 	void update(Car car);
+
+	Car findById(int carId);
 }

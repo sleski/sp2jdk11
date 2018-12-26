@@ -18,6 +18,7 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
@@ -68,6 +69,11 @@ public class CarServiceImplTest {
 		String brand = RandomStringUtils.randomAlphabetic(10);
 		String model = RandomStringUtils.randomAlphabetic(10);
 		Car car = new Car(brand, model);
+		int newCarId = carsService.create(car);
+		Car selectedCar = carsService.findById(newCarId);
+		assertThat(selectedCar.getId(), notNullValue());
+		assertThat(selectedCar.getModel(), is(model));
+		assertThat(selectedCar.getBrand(), is(brand));
 
 	}
 }
