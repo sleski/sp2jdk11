@@ -52,7 +52,7 @@ public class CarServiceImpl implements CarService {
 
 	@Override
 	public void update(Car car) {
-		String query = "UPDATE car brand = ? , model = ? where id = ?";
+		String query = "UPDATE car SET brand = ? , model = ? where id = ?";
 		jdbcTemplate.update(query, car.getBrand(), car.getModel(), car.getId());
 	}
 
