@@ -25,7 +25,6 @@ public class HomeController {
 	@RequestMapping("/")
 	@ResponseBody
 	public ResponseEntity<Car> index() {
-
-		return new ResponseEntity<>( new Car("sss", "ssssss"),HttpStatus.OK);
+		return new ResponseEntity<>(new Car("sss", "ssssss"), HttpStatus.OK);
 	}
 }
