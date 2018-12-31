@@ -1,6 +1,6 @@
-MAINTAINER sleski
-
 FROM debian:9
+
+MAINTAINER Slawomir Leski (slawomir.leski@gmail.com)
 
 RUN apt-get -qq update
 RUN apt-get -y install gnupg
