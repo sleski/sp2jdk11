@@ -35,9 +35,6 @@ public class HomeControllerTest {
 
 	@Test
 	public void testSayHelloWorld() throws Exception {
-//		when(carService.)
-		this.mockMvc.perform(get("/").accept(MediaType.parseMediaType(MediaType.APPLICATION_JSON_UTF8_VALUE)))
-				.andExpect(status().isOk());
-//				.andExpect(content().string("Greetings from Spring Boot!"));
+		this.mockMvc.perform(get("/").accept(MediaType.parseMediaType(MediaType.APPLICATION_JSON_UTF8_VALUE))).andExpect(status().isOk());
 	}
 }
