@@ -34,6 +34,13 @@ public class CarController {
 		return new ResponseEntity<>(cars, HttpStatus.OK);
 	}
 
+	@RequestMapping(value = "/counter", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<Integer> count() {
+		int carsNumber = carsService.countAll();
+		return new ResponseEntity<>(carsNumber, HttpStatus.OK);
+	}
+
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<Car> add(@RequestBody Car car) {

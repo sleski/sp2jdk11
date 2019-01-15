@@ -7,10 +7,9 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -19,6 +18,11 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 /**
  * Created by Slawomir Leski on 28-12-2018.
  */
@@ -28,13 +32,22 @@ public class CarControllerTest {
 
 	private MockMvc mockMvc;
 
-	@Autowired
-	private JdbcTemplate jdbcTemplate;
+	@Mock
+	private CarServiceImpl carsService;
 
 	@Before
 	public void setup() {
-		CarServiceImpl carsService = new CarServiceImpl(jdbcTemplate);
+		carsService = mock(CarServiceImpl.class);
 		this.mockMvc = MockMvcBuilders.standaloneSetup(new CarController(carsService)).build();
+	}
+
+	@Test
+	public void shouldCountCarsNumber() throws Exception {
+		when(carsService.countAll()).thenReturn(5);
+		MvcResult mvcResult = this.mockMvc.perform(get("/car/counter").accept(MediaType.parseMediaType(MediaType.APPLICATION_JSON_UTF8_VALUE)))
+				.andExpect(status().isOk()).andReturn();
+		String response = mvcResult.getResponse().getContentAsString();//andExpecrt(content().json("{5}"));
+		System.out.println("" + response);
 	}
 
 	@Ignore
