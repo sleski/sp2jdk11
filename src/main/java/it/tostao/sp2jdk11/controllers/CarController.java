@@ -30,6 +30,7 @@ public class CarController {
 	@RequestMapping("/")
 	@ResponseBody
 	public ResponseEntity<List<Car>> list() {
+
 		List<Car> cars = carsService.all();
 		return new ResponseEntity<>(cars, HttpStatus.OK);
 	}

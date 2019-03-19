@@ -9,4 +9,5 @@ public class Sp2jdk11Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Sp2jdk11Application.class, args);
 	}
+
 }
