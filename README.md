@@ -1,13 +1,13 @@
 # sp2jdk11
 Spring Boot 2.1.1 with jdk-11
 
-TODO:
+## TODO:
 
 * Service + test
 
-** JdbcTemplate ✓
+   * JdbcTemplate ✓
 
-** Hibernate ✗
+    * Hibernate ✗
 
 * DBUnit ✓
 
