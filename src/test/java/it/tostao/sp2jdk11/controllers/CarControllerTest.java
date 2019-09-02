@@ -56,7 +56,10 @@ public class CarControllerTest {
 		Car car = new Car("Audi","TT");
 		ObjectMapper objectMapper = new ObjectMapper();
 		String carToSend = objectMapper.writeValueAsString(car);
-		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post("/car/add").contentType(MediaType.APPLICATION_JSON_UTF8).content(carToSend)).andReturn();
+		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
+				.post("/car/add")
+				.contentType(MediaType.APPLICATION_JSON_UTF8).content(carToSend))
+				.andReturn();
 		int status = mvcResult.getResponse().getStatus();
 		assertThat(status, is(201));
 	}
