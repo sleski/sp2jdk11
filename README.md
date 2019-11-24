@@ -19,4 +19,4 @@ Spring Boot 2.1.1 with jdk-11
 
 * Dockerfile ✗
 
-* Code coverage badge
+* Code coverage badge ✗
