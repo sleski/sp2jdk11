@@ -13,7 +13,7 @@ Spring Boot 2.1.1 with jdk-11
 
 * DBUnit ✓
 
-* Controller test (Integration) ✗
+* Controller test (Integration) ✓
 
 * UI ✗
 
