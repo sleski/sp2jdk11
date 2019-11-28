@@ -14,6 +14,7 @@ apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
+apply plugin: 'jacoco'
 
 group = 'it.tostao'
 version = '0.0.1-SNAPSHOT'
@@ -21,6 +22,10 @@ sourceCompatibility = 1.11
 
 repositories {
 	mavenCentral()
+}
+
+jacoco {
+	toolVersion = "0.8.5"
 }
 
 
